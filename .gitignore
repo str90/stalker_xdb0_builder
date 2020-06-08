@@ -1,3 +1,7 @@
 .idea/
 venv/
 xray_sdk_04_2017/
+__pycache__
+build
+dist
+make_artifacts.spec
