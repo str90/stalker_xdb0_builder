@@ -32,6 +32,9 @@ gamedatadir = os.walk(configArtBuilder['artifactbuilder']['mod_gamedata_path'])
 
 print('Cleaning for new build: \n')
 
+Path("temp").mkdir(parents=True, exist_ok=True)
+Path("artifacts\\xdb").mkdir(parents=True, exist_ok=True)
+Path("artifacts\\artifacts_cab_fileserver").mkdir(parents=True, exist_ok=True)
 shutil.rmtree('temp', ignore_errors=True, onerror=None)
 shutil.rmtree('artifacts\\artifacts_cab_fileserver', ignore_errors=True, onerror=None)
 Path("temp").mkdir(parents=True, exist_ok=True)
