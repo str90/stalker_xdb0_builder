@@ -74,7 +74,7 @@ for i in range(xdbcounter):
     makecabString = 'makecab /V1 /L artifacts\\artifacts_cab_fileserver artifacts\\xdb\\' + xdbname + str(i) + '.xdb0 ' + xdbname + str(i) + '.xdb0.cab'
     subprocess.call(makecabString)
     print('Making config entry and calculating CRC32 for game asset #: ', str(i))
-    configFzGamedata['file_' + str(i)] = {'path': configArtBuilder['cabmaker']['path'],
+    configFzGamedata['file_' + str(i)] = {'path': configArtBuilder['cabmaker']['path'] + xdbname + str(i) + '.xdb0.cab',
                                           'url': configArtBuilder['cabmaker']['url'] + xdbname + str(i) + '.xdb0.cab',
                                           'size': str(os.stat(cabPath).st_size), 'crc32': calcCrc32(cabPath), 'compression': '2'}
 
