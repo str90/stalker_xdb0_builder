@@ -70,13 +70,14 @@ configFzGamedata = configparser.ConfigParser()
 configFzGamedata['main'] = {'files_count': xdbcounter}
 
 for i in range(xdbcounter):
+    xdbPath = 'artifacts\\xdb\\' + xdbname + str(i) + '.xdb0'
     cabPath = 'artifacts\\artifacts_cab_fileserver\\' + xdbname + str(i) + '.xdb0.cab'
     makecabString = 'makecab /V1 /L artifacts\\artifacts_cab_fileserver artifacts\\xdb\\' + xdbname + str(i) + '.xdb0 ' + xdbname + str(i) + '.xdb0.cab'
     subprocess.call(makecabString)
     print('Making config entry and calculating CRC32 for game asset #: ', str(i))
     configFzGamedata['file_' + str(i)] = {'path': configArtBuilder['cabmaker']['path'] + xdbname + str(i) + '.xdb0',
                                           'url': configArtBuilder['cabmaker']['url'] + xdbname + str(i) + '.xdb0.cab',
-                                          'size': str(os.stat(cabPath).st_size), 'crc32': calcCrc32(cabPath), 'compression': '2'}
+                                          'size': str(os.stat(xdbPath).st_size), 'crc32': calcCrc32(xdbPath), 'compression': '2'}
 
 configFzGamedata.write(open('artifacts\\artifacts_cab_fileserver\\' + configArtBuilder['cabmaker']['cab_config_name'], 'w'))
 
